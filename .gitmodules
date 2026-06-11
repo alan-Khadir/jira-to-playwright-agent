@@ -1,0 +1,3 @@
+[submodule ".mcp/atlassian"]
+	path = .mcp/atlassian
+	url = https://github.com/sooperset/mcp-atlassian.git
