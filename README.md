@@ -76,17 +76,28 @@ npm run test:bdd
 
 #### Step 4: Autonomous Test Generation (Advanced)
 
-With MCP servers running, use VS Code Copilot Chat and type:
+With your MCP servers running, open **VS Code Copilot Chat (Agent Mode)** and choose one of the options below to run the pipeline:
+
+##### Option A: Live Jira Integration (Full Dual-MCP Loop)
+If you have configured your Atlassian credentials and set up the blueprint ticket on your board (see the exact ticket layout in [`docs/setup-guide.md`](docs/setup-guide.md)), type:
 ```
-Automate the complete end-to-end framework assets for Jira ticket SCRUM-5
+Automate the complete end-to-end framework assets for Jira ticket SCRUM-5.
 ```
 
-The agent will autonomously:
-- Query Jira for the ticket requirements
-- Explore the live app and discover element locators
+##### Option B: Instant Local Sandbox (No Jira Required)
+If you want to test the framework's autonomous generation, locator discovery, and self-healing engine instantly without setting up a Jira account, type:
+```
+Bypass Jira and automate a brand new end-to-end negative test scenario called 'User fails to sign in with invalid credentials'. Use Playwright MCP to scan signin.html for the correct locators, generate the new test assets, and run test:bdd to validate it.
+```
+
+Whichever option you choose, the agent will autonomously:
+- Query Jira for the ticket requirements (or parse your local prompt instructions)
+- Explore the live app and discover element locators via Playwright MCP
 - Generate feature files, Page Objects, and step definitions
 - Execute tests and validate the entire suite
-- Document complete traceability in `docs/SCRUM-5-implementation.md`
+- Document complete traceability in `docs/SCRUM-5-implementation.md` (or your local equivalent)
+
+> ⚠️ **Important Note:** This repository is intentionally delivered as a **clean-slate template** with no pre-existing test files in the primary branch. This ensures that whichever command you run above, you will get to see the agent dynamically inspect the DOM, write the code, and run the self-healing loops entirely from scratch!
 
 ### Debugging & Troubleshooting
 

@@ -183,6 +183,26 @@ npm run test:bdd
 
 - If `serve` is not found, install it globally with `npm install -g serve` or use Python's `http.server`.
 
+### 📋 Jira Ticket Configuration Blueprint (For SCRUM-5)
+
+If you want to test the live Jira MCP integration, create a new story or task on your personal Atlassian Jira board with these exact details so the agent can parse it perfectly:
+
+*   **Project Key:** SCRUM
+*   **Issue ID/Key:** SCRUM-5
+*   **Summary/Title:** User logs in successfully with valid credentials
+*   **Description** (Copy and paste this exact Gherkin scenario into the description box):
+
+```gherkin
+Feature: User Sign In
+  @SCRUM-5
+  Scenario: User logs in successfully with valid credentials
+    Given a user is on the Sign In page
+    When the user enters "user@test.com" into the email field
+    And the user enters "Password123" into the password field
+    And the user clicks the sign in submit button
+    Then the user should be redirected to the dashboard page
+```
+
 ## Next steps
 
 Once the tests run successfully, you can continue by:
