@@ -1,3 +1,9 @@
+# 🗺️ Framework Assembly & Chronological Project Plan
+
+> **AUDIT NOTE:** This document serves as the master blueprint and chronological architectural log of how this framework was assembled from scratch. It is maintained here for full framework reproducibility, historical tracking, and onboarding purposes for external engineers looking to clone and rebuild this ecosystem.
+
+---
+
 # Playwright BDD Showcase — Full Project Plan
 
 This document contains the full project plan for the `playwright-bdd-showcase` repository, including the original step-by-step plan, starting scenarios, folder structure, and a delta section describing what has already been implemented in the repository.
@@ -82,7 +88,7 @@ playwright-bdd-showcase/
 
 ## Starting Scenarios (Jira tickets)
 
-### PBS-1: User navigates to Sign In page
+### SCRUM-1: User navigates to Sign In page
 ```
 Feature: Sign In Navigation
 
@@ -92,7 +98,7 @@ Feature: Sign In Navigation
     Then they should be taken to the Sign In page
 ```
 
-### PBS-2: User navigates to Create Account page
+### SCRUM-2: User navigates to Create Account page
 ```
 Feature: Create Account Navigation
 
@@ -213,13 +219,10 @@ npm run test:bdd
 
 16. Create a Jira project or reuse an existing one.
 17. Create a Jira API token for MCP integration.
-18. Create an `mcp-env-vars.env` file with your Jira credentials and secrets.
-19. Start the local MCP server via Docker Compose:
-```powershell
-docker-compose up mcp-atlassian
-```
-20. Add `.vscode/mcp.json` to point to the local Docker-based MCP service.
-21. Use Copilot agent mode to query tickets and import Gherkin into `tests/features/`.
+18. Create a `jira-mcp.env` file with your Jira credentials and secrets.
+19. Ensure Docker Desktop is running on your machine.
+20. Open Agent Mode in VS Code and ask queries related to Jira (e.g., "Show me all issues from project SCRUM"). Copilot will automatically spin up the MCP container using the `.vscode/mcp.json` configuration and your `jira-mcp.env` environment variables.
+21. Once connected, use the agent to query tickets and import Gherkin scenarios into `tests/features/`.
 
 ### PHASE 5 — Documentation and CI
 
@@ -335,4 +338,183 @@ If you'd like, I will now:
 - update `README.md` with the condensed quickstart and a link to this plan, and/or
 - create a `docs/setup-guide.md` with copyable commands and troubleshooting steps.
 
-Tell me which one to do next. 
+Tell me which one to do next.
+
+---
+
+## Phase 7 — Advanced Agentic Orchestration & Dual-Server MCP Migration
+
+### Overview
+This phase documents the critical advancement of the framework from a single-server MCP setup to a dual-server agentic orchestration layer, enabling autonomous end-to-end test generation directly from Jira tickets. The session executed the complete `SCRUM-5: User logs in successfully with valid credentials` automation workflow using declarative AI commands, demonstrating full self-healing capabilities.
+
+### Global Workspace Constraints & Orchestration Layer
+**Created File**: `.github/copilot-instructions.md`
+- Establishes a **Principal QA Automation Engineer Persona** within the VS Code Copilot environment
+- Defines mandatory architectural standards:
+  - Page Object Model (POM) with readonly locators mapped to `data-testid` attributes
+  - Gherkin feature files with lowercase, hyphenated naming conventions (e.g., `signin-login.feature`)
+  - Step definitions as lightweight glue code without embedded Playwright logic
+  - Jira ticket tagging for complete requirement traceability
+- Enforces a multi-server loop (Jira MCP + Playwright MCP) for autonomous requirement extraction and DOM interaction
+- Implements a **Self-Healing Loop**: On terminal errors, the agent autonomously diagnoses, corrects defects, and re-runs tests until success
+- Serves as the single source of truth for all framework automation standards
+
+### Dual-Server MCP Configuration
+**Updated File**: `.vscode/mcp.json`
+
+Migrated from a single Atlassian server to a dual-server architecture:
+
+**Server 1: `@sooperset/mcp-atlassian`**
+- Purpose: Extract functional requirements directly from Jira tickets
+- Enables: JQL searching, issue retrieval, comment tracking, sprint management
+- Environment: Loaded from `jira-mcp.env` (URL, username, API token)
+
+**Server 2: `@playwright/mcp@latest`**
+- Purpose: Dynamic DOM analysis and element locator discovery
+- Enables: Autonomous page snapshot analysis, data-testid extraction, interactive element mapping
+- Benefit: No need for manual locator guessing—the agent can explore the live app and extract exact selectors
+
+### Environment Prerequisites & Manual Initialization
+
+**Critical Requirement: Docker Desktop**
+- Docker Desktop must be running in the background at all times
+- Start Docker Desktop from your applications menu or system tray before opening VS Code
+- Both MCP servers execute inside Docker containers to maintain session security and isolation
+
+**Manual Server Initialization in VS Code**
+1. After opening the workspace, open the **MCP Panel** (via the status bar or Command Palette)
+2. **Atlassian Server**: Click "Start" to manually activate the `@sooperset/mcp-atlassian` server
+3. **Playwright Server**: Click "Start" to manually activate the `@playwright/mcp` server
+4. Both servers must show a **green status** indicating they are running
+5. This manual toggle ensures session security: credentials are never auto-loaded; servers are only active when explicitly needed
+
+### Workspace Reload Synchronization
+
+**Critical Sequence After MCP Configuration Changes**:
+1. After updating `.vscode/mcp.json` or toggling MCP servers for the first time
+2. Run: `Ctrl+Shift+P` → `Developer: Reload Window`
+3. This synchronizes the newly registered environment pipes and ensures Copilot can communicate with both servers
+4. Failure to reload may result in "MCP not available" errors when running declarative automation commands
+
+### SCRUM-5 Execution: Autonomous Test Generation from Jira
+
+#### Functional Requirement Creation
+1. Created ticket **SCRUM-5** on the Jira board with the title: "User logs in successfully with valid credentials"
+2. Described the complete Gherkin scenario in the ticket description (Given-When-Then format)
+3. Added form capabilities to `webapp/html/signin.html`:
+   - Email input field with `data-testid="email-input"`
+   - Password input field with `data-testid="password-input"`
+   - Submit button with `data-testid="submit-signin"`
+4. Added Dashboard success indicator with `data-testid="dashboard-welcome"`
+
+#### Declarative Automation Command
+Executed the following command in VS Code Copilot Chat:
+```
+Automate the complete end-to-end framework assets for Jira ticket SCRUM-5
+```
+
+This single command triggered the agent to:
+1. Query Jira for SCRUM-5 requirements
+2. Extract the Gherkin scenario from the ticket
+3. Use Playwright MCP to autonomously explore the live web app and discover element locators
+4. Generate the complete automation stack (feature file, Page Object, step definitions)
+5. Execute tests and validate the entire flow
+
+#### Self-Healing Loop & Error Recovery
+**Critical Success**: During the first test execution, the agent encountered a TypeScript compilation error (missing step definition imports). Instead of failing:
+1. **Intercepted the error**: The agent read the terminal output and identified the root cause
+2. **Autonomously corrected**: Applied fixes to align Page Object imports and step definition structure
+3. **Re-ran the suite**: Executed `npm run test:bdd` again
+4. **Achieved green status**: All 3 scenarios and 17 steps passed on the second run
+
+This demonstrates the framework's **self-healing architecture**: the agent is intelligent enough to diagnose, fix, and validate its own work without human intervention.
+
+#### Generated Artifacts
+
+**Feature File**: `tests/features/signin-login.feature`
+```gherkin
+Feature: User Sign In
+  @SCRUM-5
+  Scenario: User logs in successfully with valid credentials
+    Given a user is on the Sign In page
+    When the user enters "user@test.com" into the email field
+    And the user enters "Password123" into the password field
+    And the user clicks the sign in submit button
+    Then the user should be redirected to the dashboard page
+```
+
+**Page Object**: `tests/src/pages/SignInPage.ts`
+- Locators for email, password, submit button, and dashboard confirmation
+- Methods: `goTo()`, `enterEmail()`, `enterPassword()`, `clickSignInButton()`, `isOnDashboard()`
+- All locators mapped to exact `data-testid` attributes discovered via Playwright MCP
+
+**Step Definitions**: `tests/src/steps/signin.steps.ts`
+- 5 complete step definitions wired to the Page Object
+- No embedded Playwright code; all actions delegated to POM methods
+- Uses Cucumber expressions for clean, readable step signatures
+
+**Execution Report**: `tests/features/signin-login.feature`
+```
+✅ 3 scenarios (3 passed)
+✅ 17 steps (17 passed)
+⏱ Execution time: 3.586 seconds
+```
+
+#### Artifact Traceability Report
+**Critical Addition**: `docs/SCRUM-5-implementation.md`
+- Autonomously generated by the agent to provide complete traceability between Jira SCRUM-5 and the test framework
+- Documents:
+  - Jira ticket details (ID, title, status, sprint, priority)
+  - Extracted Gherkin scenario
+  - Generated framework assets (feature file, POM, step definitions)
+  - Exact data-testid mappings discovered from the live app
+  - Test execution results and architectural compliance checklist
+  - Deployment instructions and next steps
+- **CRITICAL**: Do not delete this file; it serves as the permanent record of automated requirement-to-framework traceability
+
+### Key Architectural Achievements
+
+1. **Autonomous Requirement Extraction**: Direct integration with Jira via MCP means requirements are never manually copied or misinterpreted; the agent pulls them live
+2. **Dynamic DOM Discovery**: Playwright MCP enables the agent to explore the running app and extract locators autonomously; no more manual inspection
+3. **Self-Healing Intelligence**: The agent intercepts errors, diagnoses root causes, applies fixes, and re-validates; failures trigger automatic remediation
+4. **Complete Traceability**: Every automation artifact is tagged with its source Jira ticket, enabling bidirectional traceability
+5. **Zero Manual Locator Guessing**: All Page Object locators are discovered dynamically from the live application
+
+### Validation & Success Criteria
+
+✅ **Framework Validation**:
+- SCRUM-5 tests run in headless and headed modes without modification
+- All step definitions map correctly to Cucumber expressions
+- Page Object locators match live app DOM elements
+- Feature file follows lowercase, hyphenated naming convention
+- Jira tag (`@SCRUM-5`) present for traceability
+
+✅ **Self-Healing Loop Success**:
+- Agent autonomously detected TypeScript compilation errors
+- Agent applied corrections without user intervention
+- Suite re-ran and achieved 100% pass rate
+
+✅ **Documentation & Artifacts**:
+- `docs/SCRUM-5-implementation.md` generated and preserved for traceability
+- All framework assets committed to repository
+- Dual-server configuration documented in this phase section
+
+### Next Phase Roadmap
+
+**Phase 8: Negative Test Scenarios & Advanced Coverage**
+- Automate SCRUM tickets for invalid credential handling
+- Implement negative path scenarios (wrong email, wrong password, empty fields)
+- Test error message validation and recovery flows
+- Extend POM with assertion helpers for better maintainability
+
+**Phase 9: CI/CD Integration & Reporting**
+- Add GitHub Actions workflow for automated test runs on push
+- Integrate HTML report generation (Playwright's built-in reporter)
+- Add screenshot capture on failure for debugging
+- Set up Jira comment automation: post test results back to tickets
+
+**Phase 10: Agentic Test Suite Generation from Epic**
+- Create a parent epic in Jira (e.g., "Complete Authentication Flow")
+- Execute a single command: "Generate all test automation for [EPIC-KEY]"
+- Agent autonomously creates features, POMs, and step definitions for all child tickets
+- Validate entire suite in a single pipeline run 

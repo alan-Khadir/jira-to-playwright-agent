@@ -1,13 +1,22 @@
 {
-  "mcpServers": {
-    "mcp-atlassian-local": {
-      "command": "docker-compose",
-      "args": ["-f", "docker-compose.yml", "up", "--build", "--remove-orphans"],
-      "env": {
-        "JIRA_URL": "https://your-company.atlassian.net",
-        "JIRA_USERNAME": "you@company.com",
-        "JIRA_API_TOKEN": "your_api_token"
-      }
+  "servers": {
+    "mcp-atlassian": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "--env-file",
+        "C:\\git-personal\\playwright-bdd-showcase\\jira-mcp.env",
+        "ghcr.io/sooperset/mcp-atlassian:latest"
+      ]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ]
     }
   }
 }

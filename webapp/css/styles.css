@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2rem;
+  background: #f7f7f7;
+}
+main {
+  max-width: 480px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+}
+h1 {
+  margin-top: 0;
+}
+button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background: #1d72b8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.error { color: #c83636; margin-top: 0.75rem; }
+.message { color: #2a7a2a; margin-top: 0.75rem; }
+label { display:block; margin-top:0.75rem; }
+input { width:100%; padding:0.5rem; margin-top:0.25rem; box-sizing:border-box; }

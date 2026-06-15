@@ -1,0 +1,33 @@
+{
+  "name": "playwright-bdd-showcase",
+  "version": "1.0.0",
+  "description": "BDD test automation framework using Playwright, TypeScript, Cucumber, and AI-powered Jira integration",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:bdd": "cucumber-js --require-module ts-node/register --require src/**/*.ts --format progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alan-Khadir/playwright-bdd-showcase.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alan-Khadir/playwright-bdd-showcase/issues"
+  },
+  "homepage": "https://github.com/alan-Khadir/playwright-bdd-showcase#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.0.0",
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}

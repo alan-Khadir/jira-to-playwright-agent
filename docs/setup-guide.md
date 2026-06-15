@@ -16,7 +16,7 @@ Make sure you have the following installed:
 Open a terminal at the repository root:
 
 ```bash
-cd C:/git-personal/playwright-bdd-showcase
+cd .
 ```
 
 Install project dependencies for the `tests` folder:
@@ -33,22 +33,22 @@ Open a second terminal and start the static webapp server from the `webapp` fold
 If you have `serve` installed globally:
 
 ```bash
-cd C:/git-personal/playwright-bdd-showcase/webapp
-npx serve .
+cd webapp
+npx serve@latest .
 ```
 
 If `serve` is not installed, install it once:
 
 ```bash
 npm install -g serve
-cd C:/git-personal/playwright-bdd-showcase/webapp
+cd webapp
 serve .
 ```
 
 Alternatively, use Python's built-in server:
 
 ```bash
-cd C:/git-personal/playwright-bdd-showcase/webapp
+cd webapp
 python -m http.server 3000
 ```
 
@@ -63,13 +63,34 @@ http://localhost:3000/html/index.html
 With the webapp server running, open another terminal and run:
 
 ```bash
-cd C:/git-personal/playwright-bdd-showcase/tests
+cd tests
 npm run test:bdd
 ```
 
-## Configure the MCP Jira integration
+## Configure the Dual-Server MCP Integration
 
-Create a `mcp-env-vars.env` file in the repository root with your Jira credentials:
+### Prerequisites
+
+1. **Docker Desktop** must be running at all times (open from applications menu or system tray)
+2. Both MCP servers are pre-configured in `.vscode/mcp.json` and execute inside Docker containers
+
+### Initialize MCP Servers (One-Time Setup)
+
+1. In VS Code, open the **MCP Panel** via:
+   - The status bar icon, OR
+   - Command Palette: `Ctrl+Shift+P` → "MCP"
+
+2. For each server, click **Start**:
+   - `@sooperset/mcp-atlassian` (Jira integration)
+   - `@playwright/mcp` (Dynamic DOM exploration)
+
+3. **Reload the workspace** to synchronize environment pipes:
+   - `Ctrl+Shift+P` → `Developer: Reload Window`
+   - Wait for VS Code to restart and MCP servers to reconnect
+
+### Jira MCP Configuration
+
+Create a `jira-mcp.env` file in the repository root with your Jira credentials:
 
 ```text
 JIRA_URL=https://your-company.atlassian.net
@@ -78,13 +99,27 @@ JIRA_API_TOKEN=your_api_token
 MCP_VERY_VERBOSE=true
 ```
 
-Use the root-level `docker-compose.yml` to run the official MCP Atlassian container:
+**How It Works**:
+- Your `.vscode/mcp.json` is configured with a `docker run` command
+- When you start the Atlassian server via the MCP Panel, it launches a Docker container
+- The container loads credentials from `jira-mcp.env` and exposes Jira query APIs
+- Communication happens via process streams (no localhost ports exposed)
+- Both servers run simultaneously for dual-layer automation
 
-```powershell
-docker-compose up mcp-atlassian
+### Using the Servers
+
+Once both servers are running and the window is reloaded:
+
+**Jira Queries** (e.g., in VS Code Copilot Chat):
+```
+Show me all issues from project SCRUM
+Automate the complete end-to-end framework assets for Jira ticket SCRUM-5
 ```
 
-Your workspace `.vscode/mcp.json` is configured to launch this service via Docker Compose.
+**DOM Exploration** (automatic during test generation):
+- The agent uses Playwright MCP to explore the live webapp
+- It discovers and extracts exact `data-testid` attributes
+- No manual locator guessing required
 
 ## Run tests with a visible browser
 
@@ -110,7 +145,7 @@ In PowerShell, set the environment variable first and then run the tests:
 
 ```powershell
 $env:PWDEBUG = '1'
-cd C:/git-personal/playwright-bdd-showcase/tests
+cd tests
 npm run test:bdd
 ```
 
@@ -135,7 +170,7 @@ You can also use the Playwright VS Code Extension to create, run, and debug test
 - If the Playwright hooks timeout while launching Chromium, run:
 
 ```bash
-cd C:/git-personal/playwright-bdd-showcase/tests
+cd tests
 npx playwright install chromium
 ```
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign In</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <main>
+    <h1>Sign In</h1>
+    <form id="signin-form">
+      <label for="email">Email</label>
+      <input data-testid="email-input" type="email" id="email" required />
+      <label for="password">Password</label>
+      <input data-testid="password-input" type="password" id="password" required />
+      <button data-testid="submit-signin" type="submit">Sign In</button>
+      <div id="signin-error" class="error" aria-live="polite"></div>
+    </form>
+  </main>
+  <script src="../js/app.js"></script>
+</body>
+</html>

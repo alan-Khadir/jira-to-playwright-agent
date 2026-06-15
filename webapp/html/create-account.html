@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Create Account</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <main>
+    <h1>Create Account</h1>
+    <form id="create-account-form">
+      <label for="new-email">Email</label>
+      <input data-testid="new-email-input" type="email" id="new-email" required />
+      <label for="new-password">Password</label>
+      <input data-testid="new-password-input" type="password" id="new-password" required />
+      <button data-testid="submit-create-account" type="submit">Create Account</button>
+      <div id="create-account-message" class="message" aria-live="polite"></div>
+    </form>
+  </main>
+  <script src="../js/app.js"></script>
+</body>
+</html>
