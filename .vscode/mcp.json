@@ -7,7 +7,7 @@
         "--rm",
         "-i",
         "--env-file",
-        "C:\\git-personal\\playwright-bdd-showcase\\jira-mcp.env",
+        "C:\\git-personal\\jira-to-playwright-agent\\jira-mcp.env",
         "ghcr.io/sooperset/mcp-atlassian:latest"
       ]
     },

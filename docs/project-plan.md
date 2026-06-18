@@ -4,9 +4,9 @@
 
 ---
 
-# Playwright BDD Showcase — Full Project Plan
+# Jira to Playwright Agent — Full Project Plan
 
-This document contains the full project plan for the `playwright-bdd-showcase` repository, including the original step-by-step plan, starting scenarios, folder structure, and a delta section describing what has already been implemented in the repository.
+This document contains the full project plan for the `jira-to-playwright-agent` repository, including the original step-by-step plan, starting scenarios, folder structure, and a delta section describing what has already been implemented in the repository.
 
 > NOTE: This project demonstrates end-to-end test automation using BDD (Cucumber/Gherkin), Playwright, TypeScript, and an eventual MCP/Jira integration. Follow the steps below to recreate the project on your machine.
 
@@ -14,7 +14,7 @@ This document contains the full project plan for the `playwright-bdd-showcase` r
 
 ## Project Summary
 
-- Repository name: `playwright-bdd-showcase` (public, under your personal GitHub account)
+- Repository name: `jira-to-playwright-agent` (public, under your personal GitHub account)
 - Purpose: a portfolio project demonstrating Playwright + Cucumber BDD, Page Object Model, and an AI-assisted MCP integration with Jira
 
 ## Components
@@ -28,7 +28,7 @@ This document contains the full project plan for the `playwright-bdd-showcase` r
 ## Folder Structure
 
 ```
-playwright-bdd-showcase/
+jira-to-playwright-agent/
 ├── webapp/                          # Playground web app
 │   ├── html/                        # static HTML pages
 │   │   ├── index.html               # Landing/Home page
@@ -138,7 +138,7 @@ Feature: Home Page Navigation
 git config --global user.name "My Name"
 git config --global user.email "my-github-email@example.com"
 ```
-3. Create the GitHub repository `playwright-bdd-showcase` (public) and clone it locally.
+3. Create the GitHub repository `jira-to-playwright-agent` (public) and clone it locally.
 
 ### PHASE 1 — Folder structure and repo scaffold
 
@@ -313,7 +313,7 @@ Yes — also update the top-level `README.md` with a condensed plan and run inst
 Example README snippet to add:
 
 ```
-# Playwright BDD Showcase
+# Jira to Playwright Agent
 
 This repo demonstrates Playwright with Cucumber BDD and a minimal playground webapp.
 

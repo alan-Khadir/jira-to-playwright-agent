@@ -1,4 +1,4 @@
-# 🎭 Playwright BDD Showcase
+# 🎭 Jira to Playwright Agent
 ## Dual-Server Agentic Orchestration Layer for Autonomous Test Generation
 
 ### Architecture Overview

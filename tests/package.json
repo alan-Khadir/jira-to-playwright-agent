@@ -1,5 +1,5 @@
 {
-  "name": "playwright-bdd-showcase",
+  "name": "jira-to-playwright-agent",
   "version": "1.0.0",
   "description": "BDD test automation framework using Playwright, TypeScript, Cucumber, and AI-powered Jira integration",
   "main": "index.js",
@@ -13,16 +13,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alan-Khadir/playwright-bdd-showcase.git"
+    "url": "git+https://github.com/alan-Khadir/jira-to-playwright-agent.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/alan-Khadir/playwright-bdd-showcase/issues"
+    "url": "https://github.com/alan-Khadir/jira-to-playwright-agent/issues"
   },
-  "homepage": "https://github.com/alan-Khadir/playwright-bdd-showcase#readme",
+  "homepage": "https://github.com/alan-Khadir/jira-to-playwright-agent#readme",
   "devDependencies": {
     "@cucumber/cucumber": "^13.0.0",
     "@playwright/test": "^1.60.0",
