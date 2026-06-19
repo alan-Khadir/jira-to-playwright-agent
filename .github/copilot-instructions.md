@@ -33,7 +33,11 @@ Absolutely — here’s the full section in your existing style (no subsection n
 ```markdown
 ## 4. Execution & Self-Healing Loop
 - **Preparation:** Always ensure the terminal context is in the `tests` directory before execution (e.g., `cd tests`).
-- **Execution:** Trigger the test suite using `npm run test:bdd`.
+- **Execution (Single-Run Rule):**
+    - Run exactly one primary test command per automation cycle.
+    - Default command in Agent Mode is `npm run test:bdd:demo`.
+    - Do not run `npm run test:bdd` in the same cycle unless the user explicitly requests it.
+    - If the user explicitly requests CI mode or explicitly says `npm run test:bdd`, run only `npm run test:bdd`.
 - **Self-Healing Logic:**
     - Monitor output for compilation errors, step mismatches, or element locator issues.
     - If errors occur, intercept the stack trace, analyze the defect, and apply the fix directly to the codebase.
@@ -48,11 +52,6 @@ Absolutely — here’s the full section in your existing style (no subsection n
         - Windows: `npm run report:open:win`
         - macOS: `npm run report:open:mac`
         - Linux: `npm run report:open:linux`
-- **Default Execution Policy (MANDATORY):**
-    - In Agent Mode, default execution command is `npm run test:bdd:demo`.
-    - This default applies to all automation requests unless the user explicitly instructs otherwise.
-    - If the user explicitly says to use `npm run test:bdd`, the agent must run `npm run test:bdd` and must not auto-open the report.
-    - If execution mode is not specified by the user, always assume demo mode and run `npm run test:bdd:demo`.
 - **Post-Execution Reporting Standard (MANDATORY):**
     - Always produce a final summary block after each run (pass or fail).
     - In BDD mode, the primary execution unit is **Scenario**. Do not use “tests passed” language.
@@ -88,6 +87,5 @@ Outcome:
 - **Enforcement Rules:**
     - If BDD execution is used, headline must always be: `BDD Summary` with Scenario and Step counts.
     - Never alternate between “tests passed” and “scenarios passed” in BDD mode.
-    - “Tests passed” may only be used for non-BDD/unit/integration runners.
-    - Keep summary concise, scannable, and presentation-ready for demos.
+    - “Tests passed” may only be used for non-BDD/unit/integration runners.    - Never execute both `npm run test:bdd` and `npm run test:bdd:demo` in the same run unless the user explicitly asks for both.    - Keep summary concise, scannable, and presentation-ready for demos.
 ```
