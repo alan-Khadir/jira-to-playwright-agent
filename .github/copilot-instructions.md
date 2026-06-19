@@ -48,6 +48,11 @@ Absolutely — here’s the full section in your existing style (no subsection n
         - Windows: `npm run report:open:win`
         - macOS: `npm run report:open:mac`
         - Linux: `npm run report:open:linux`
+- **Default Execution Policy (MANDATORY):**
+    - In Agent Mode, default execution command is `npm run test:bdd:demo`.
+    - This default applies to all automation requests unless the user explicitly instructs otherwise.
+    - If the user explicitly says to use `npm run test:bdd`, the agent must run `npm run test:bdd` and must not auto-open the report.
+    - If execution mode is not specified by the user, always assume demo mode and run `npm run test:bdd:demo`.
 - **Post-Execution Reporting Standard (MANDATORY):**
     - Always produce a final summary block after each run (pass or fail).
     - In BDD mode, the primary execution unit is **Scenario**. Do not use “tests passed” language.

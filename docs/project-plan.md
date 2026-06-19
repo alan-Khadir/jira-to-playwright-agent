@@ -253,6 +253,7 @@ npm run test:bdd
     - **Deliverable:** HTML report generated at `reports/html/index.html` using `multiple-cucumber-html-reporter`.
     - **Demo Flow:** `npm run test:bdd:demo` must execute tests, generate the HTML report, and auto-open it in the default browser.
     - **CI Flow:** `npm run test:bdd` must remain non-interactive and must not auto-open browsers or generate HTML reports.
+    - **Default Execution Policy:** In Agent Mode, the default execution command is `npm run test:bdd:demo`. This applies to all automation requests unless the user explicitly instructs otherwise. If the user explicitly requests `npm run test:bdd`, the agent must honour that and must not auto-open the report.
 
 ## Running tests locally (diagram)
 

@@ -89,6 +89,8 @@ npm run report:bdd
 
 > **Note:** `npm run test:bdd` remains CI-friendly and non-interactive — it does not generate or auto-open reports. Use `npm run test:bdd:demo` exclusively for demo recordings and presentations.
 
+> **Default Execution Policy:** In Agent Mode, the default execution command is `npm run test:bdd:demo`. This applies to all automation requests unless the user explicitly instructs otherwise. If the user explicitly requests `npm run test:bdd`, the agent will run that command without auto-opening the report.
+
 ---
 
 ## 🔧 Configure the Dual-Server MCP Integration
