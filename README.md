@@ -120,3 +120,7 @@ Use the [Playwright VS Code Extension](https://playwright.dev/docs/getting-start
 - **Setup Guide**: [docs/setup-guide.md](docs/setup-guide.md) — environment configuration and troubleshooting
 - **Example Automation Report**: [docs/SCRUM-5-implementation.md](docs/SCRUM-5-implementation.md) — SCRUM-5 autonomous test generation artifacts and traceability
 - **Global Constraints**: [.github/copilot-instructions.md](.github/copilot-instructions.md) — Principal QA Engineer persona and framework standards
+
+## License
+
+This project is licensed under the AGPL-3.0 License — see the LICENSE file for details.
