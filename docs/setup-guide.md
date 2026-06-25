@@ -246,6 +246,58 @@ You can also leverage the official **Playwright VS Code Extension** to run and t
 
 ---
 
+## 🎬 Demo Presentation Mode (Optional)
+
+This mode enables structured, narration-friendly logging designed for recorded walkthroughs and video demonstrations. When active, the agent outputs clear milestone announcements suitable for voiceover narration.
+
+### How to Request It
+
+Add the activation flag directly in your prompt:
+
+**Enable:**
+```
+Automate SCRUM-5 — Demo Presentation Mode ON.
+```
+
+**Disable:**
+```
+Automate SCRUM-5 — Demo Presentation Mode OFF.
+```
+
+### Execution Behavior
+
+- Demo Presentation Mode ON/OFF only changes log verbosity — it does not affect which test command is executed.
+- The default execution command remains `npm run test:bdd:demo` (tests + report + auto-open) regardless of mode, unless the user explicitly requests `npm run test:bdd`.
+
+### Prompt Examples
+
+```
+Automate the complete end-to-end framework assets for Jira ticket SCRUM-5.
+Run in Demo Presentation Mode (milestone narration enabled).
+Use npm run test:bdd:demo.
+```
+
+```
+Automate the complete end-to-end framework assets for Jira ticket SCRUM-5.
+Run in Standard Mode (concise logs, no milestone narration).
+Use npm run test:bdd:demo.
+```
+
+```
+Automate SCRUM-5 — Demo Presentation Mode ON.
+```
+
+Demo Presentation Mode controls narration verbosity only; command execution remains `npm run test:bdd:demo` unless `npm run test:bdd` is explicitly requested.
+
+### Quick Troubleshooting
+
+| Situation | Action |
+|-----------|--------|
+| Logs are too verbose during normal work | Use "Demo Presentation Mode OFF." in your prompt |
+| Recording a walkthrough or video demo | Use "Demo Presentation Mode ON." in your prompt |
+
+---
+
 ## 🚨 Troubleshooting
 
 ### App Connection Failures

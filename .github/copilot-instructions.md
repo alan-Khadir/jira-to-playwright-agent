@@ -89,3 +89,24 @@ Outcome:
     - Never alternate between “tests passed” and “scenarios passed” in BDD mode.
     - “Tests passed” may only be used for non-BDD/unit/integration runners.    - Never execute both `npm run test:bdd` and `npm run test:bdd:demo` in the same run unless the user explicitly asks for both.    - Keep summary concise, scannable, and presentation-ready for demos.
 ```
+## 5. Demo Presentation Mode
+
+- Activate this mode only when the user explicitly requests demo/presentation mode; otherwise use standard concise execution logs.
+
+### Demo Presentation Mode
+To assist with video demonstration, please follow these communication protocols for every major stage:
+
+**Milestones:**
+1. **Requirements & Setup:** Fetching the Jira task, checking existing test coverage, and analyzing current project configuration.
+2. **Live Scenario Validation:** Analyzing the app's internal logic and walking through the live UI to confirm the flow and find all elements.
+3. **Asset Generation:** Writing the new automation tests.
+4. **Test Execution:** Running the tests and fixing any issues automatically (Self-Healing).
+
+**Protocol:**
+1. **Formatting:** Use **bold text** and clear separators (e.g., `---`) for all milestone updates so they are highly visible within the terminal logs.
+2. **Before starting** each milestone, output: "**Starting [Milestone Name]:** [One short sentence explaining the action]."
+3. **When performing advanced tasks**, output:
+   - "**Self-Healing:** [Explain what was fixed]."
+   - "**Live Interaction:** [Explain what logic or UI element was navigated]."
+4. **Upon completing** each milestone, output: "**[Milestone Name] completed successfully.**"
+5. **Tone:** Keep all outputs strictly relevant to the task and suitable for a professional voiceover narration.

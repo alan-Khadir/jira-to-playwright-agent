@@ -99,6 +99,56 @@ Whichever option you choose, the agent will autonomously:
 
 > ⚠️ **Important Note:** This repository is intentionally delivered as a **clean-slate template** with no pre-existing test files in the primary branch. This ensures that whichever command you run above, you will get to see the agent dynamically inspect the DOM, write the code, and run the self-healing loops entirely from scratch!
 
+## Demo Presentation Mode
+
+A narration-friendly logging mode designed for video demos and recorded walkthroughs. When activated, the agent outputs structured milestone updates suitable for professional voiceover narration.
+
+**Activation rule:** Only enabled when explicitly requested in the prompt.
+
+**Example prompts:**
+
+Demo ON:
+```
+Automate SCRUM-5 — Demo Presentation Mode ON.
+```
+
+Demo OFF:
+```
+Automate SCRUM-5 — Demo Presentation Mode OFF.
+```
+
+**Command behavior:**
+- Demo mode ON/OFF changes log verbosity only.
+- Default execution command in Agent Mode remains `npm run test:bdd:demo` unless the user explicitly requests `npm run test:bdd`.
+
+**Expected milestone outputs:**
+- `Starting [Milestone Name]` — announces each phase
+- `Self-Healing` — explains automatic fixes applied
+- `Live Interaction` — describes UI elements navigated
+- `[Milestone Name] completed successfully` — confirms phase completion
+
+### Prompt Examples
+
+```
+Automate the complete end-to-end framework assets for Jira ticket SCRUM-5.
+Run in Demo Presentation Mode (milestone narration enabled).
+Use npm run test:bdd:demo.
+```
+
+```
+Automate the complete end-to-end framework assets for Jira ticket SCRUM-5.
+Run in Standard Mode (concise logs, no milestone narration).
+Use npm run test:bdd:demo.
+```
+
+```
+Automate SCRUM-5 — Demo Presentation Mode ON.
+```
+
+Demo Presentation Mode controls narration verbosity only; command execution remains `npm run test:bdd:demo` unless `npm run test:bdd` is explicitly requested.
+
+---
+
 ### Debugging & Troubleshooting
 
 **Default Browser Execution**: The test suite runs in **headed mode by default** (`headless: false` in `tests/src/support/hooks.ts`), so you will see the browser UI during test execution.
