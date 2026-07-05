@@ -1,1 +1,110 @@
-[]
+[
+  {
+    "description": "  As a registered user, I want to log in with valid credentials\n  so that I can access the Dashboard page.",
+    "elements": [
+      {
+        "description": "",
+        "id": "user-login-verification;user-logs-in-successfully-with-valid-credentials",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "User logs in successfully with valid credentials",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 613206099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "a user is on the Sign In page",
+            "match": {
+              "location": "src\\steps\\user-login.ts:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 61753299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "the user enters \"user@test.com\" into the email field",
+            "match": {
+              "location": "src\\steps\\user-login.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43639099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "the user enters \"Password123\" into the password field",
+            "match": {
+              "location": "src\\steps\\user-login.ts:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32010800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "the user clicks the sign in submit button",
+            "match": {
+              "location": "src\\steps\\user-login.ts:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 136481500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "the user should be redirected to the dashboard page",
+            "match": {
+              "location": "src\\steps\\user-login.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45930799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 276529100
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@SCRUM-5",
+            "line": 6
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "user-login-verification",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "User Login Verification",
+    "tags": [],
+    "uri": "features\\user-login.feature"
+  }
+]

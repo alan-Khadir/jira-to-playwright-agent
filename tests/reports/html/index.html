@@ -79,9 +79,9 @@
                 <div class="truncate text-xs">
                     <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Execution Period</p>
                     <div class="font-medium text-foreground flex items-center gap-2">
-                        <span>2026/06/19 10:36:09</span>
+                        <span>2026/07/05 22:35:19</span>
                         <span class="opacity-40 italic font-normal ml-2">Duration:</span>
-                        <span>00:00:00.000</span>
+                        <span>00:00:00.319</span>
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="truncate">
                         <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Report Generated</p>
-                        <p class="text-sm font-bold text-foreground truncate">2026-06-19T09:36:09.515Z</p>
+                        <p class="text-sm font-bold text-foreground truncate">2026-07-05T21:35:19.397Z</p>
                     </div>
                 </div>
                 
@@ -221,6 +221,84 @@
             <tbody id="features-table-body" class="divide-y divide-border">
                 
                 
+                <tr class="hover:bg-muted/50 transition-colors">
+                    <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-[200px]">
+                        <a href="features/f366e9f7-18f9-4742-8caf-859aeee94c78-user-login-verification.html" class="font-medium text-primary hover:underline">
+                            User Login Verification
+                        </a>
+                        <div class="flex flex-wrap gap-1 mt-1">
+                            
+                        </div>
+                    </td>
+                    <td class="px-4 md:px-6 py-4 whitespace-nowrap">
+                        
+                        
+                        
+                        
+                        
+                        <div class="flex items-center gap-2.5 text-muted-foreground">
+                            
+                            <span title="Local Machine">
+                                <i class="fa-solid fa-desktop text-base"></i>
+                            </span>
+                            
+                            
+                            <span title="windows 11">
+                                <i class="fa-brands fa-windows text-base"></i>
+                            </span>
+                            
+                            
+                            
+                            <span title="chromium latest">
+                                <i class="fa-solid fa-globe text-base"></i>
+                            </span>
+                            
+                            
+                            
+                            <span title="Local machine">
+                                <i class="fa-solid fa-computer text-base"></i>
+                            </span>
+                            
+                        </div>
+                    </td>
+                    <td class="px-4 md:px-6 py-4 min-w-[240px]">
+                        <div class="flex h-2 w-full overflow-hidden rounded-full bg-secondary">
+                            
+                            <div class="h-full bg-status-passed" style="width: 100%"></div>
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                        <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
+                            <span class="text-status-passed">1 Passed</span>
+                            <span class="text-status-failed">0 Failed</span>
+                            
+                            
+                            
+                            <span class="text-status-skipped">0 Skipped</span>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                         
+                         
+                            
+                         
+                         <div class="inline-flex items-center justify-end relative h-12 w-12">
+                            <svg class="h-12 w-12 transform -rotate-90">
+                              <circle class="text-muted/20" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                              <circle class="text-status-passed transition-all duration-500 ease-out" stroke-width="3" 
+                                stroke-dasharray="125.6" 
+                                stroke-dashoffset="0" 
+                                stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                            </svg>
+                            <span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">100%</span>
+                         </div>
+                    </td>
+                </tr>
+                
             </tbody>
         </table>
     </div>
@@ -228,7 +306,7 @@
     <!-- Pagination -->
     <div class="px-6 py-4 border-t flex items-center justify-between text-xs text-muted-foreground bg-muted/20">
         <div>
-            Showing <span id="showing-start" class="font-bold text-foreground">1</span> to <span id="showing-end" class="font-bold text-foreground">10</span> of <span id="total-records" class="font-bold text-foreground">0</span> entries
+            Showing <span id="showing-start" class="font-bold text-foreground">1</span> to <span id="showing-end" class="font-bold text-foreground">10</span> of <span id="total-records" class="font-bold text-foreground">1</span> entries
         </div>
         <div class="flex items-center gap-1" id="pagination-controls">
             <button id="prev-page" disabled class="h-8 w-8 flex items-center justify-center rounded border border-transparent text-foreground hover:bg-muted hover:border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed">
@@ -249,9 +327,9 @@
 <script>
     // Embedded data for charts
     const chartData = {
-        summary: {"ambiguous":0,"failed":0,"passed":0,"notDefined":0,"pending":0,"skipped":0,"total":0,"ambiguousPercentage":"NaN","failedPercentage":"NaN","notDefinedPercentage":"NaN","pendingPercentage":"NaN","skippedPercentage":"NaN","passedPercentage":"NaN","steps":{"passed":0,"failed":0,"skipped":0,"total":0}},
-        scenarios: {"failed":0,"ambiguous":0,"notDefined":0,"pending":0,"skipped":0,"passed":0,"total":0},
-        features: []
+        summary: {"ambiguous":0,"failed":0,"passed":1,"notDefined":0,"pending":0,"skipped":0,"total":1,"ambiguousPercentage":"0.00","failedPercentage":"0.00","notDefinedPercentage":"0.00","pendingPercentage":"0.00","skippedPercentage":"0.00","passedPercentage":"100.00","steps":{"passed":0,"failed":0,"skipped":0,"total":0}},
+        scenarios: {"failed":0,"ambiguous":0,"notDefined":0,"pending":0,"skipped":0,"passed":1,"total":1,"ambiguousPercentage":"0.00","failedPercentage":"0.00","notDefinedPercentage":"0.00","passedPercentage":"100.00","pendingPercentage":"0.00","skippedPercentage":"0.00"},
+        features: [{"description":"  As a registered user, I want to log in with valid credentials\n  so that I can access the Dashboard page.","elements":[{"description":"","id":"user-login-verification;user-logs-in-successfully-with-valid-credentials","keyword":"Scenario","line":7,"name":"User logs in successfully with valid credentials","steps":[{"keyword":"Before","hidden":true,"result":{"status":"passed","duration":613206099}},{"arguments":[],"keyword":"Given ","line":8,"name":"a user is on the Sign In page","match":{"location":"src\\steps\\user-login.ts:7"},"result":{"status":"passed","duration":61753299},"time":"00:00:00.061"},{"arguments":[],"keyword":"When ","line":9,"name":"the user enters \"user@test.com\" into the email field","match":{"location":"src\\steps\\user-login.ts:13"},"result":{"status":"passed","duration":43639099},"time":"00:00:00.043"},{"arguments":[],"keyword":"And ","line":10,"name":"the user enters \"Password123\" into the password field","match":{"location":"src\\steps\\user-login.ts:19"},"result":{"status":"passed","duration":32010800},"time":"00:00:00.032"},{"arguments":[],"keyword":"And ","line":11,"name":"the user clicks the sign in submit button","match":{"location":"src\\steps\\user-login.ts:25"},"result":{"status":"passed","duration":136481500},"time":"00:00:00.136"},{"arguments":[],"keyword":"Then ","line":12,"name":"the user should be redirected to the dashboard page","match":{"location":"src\\steps\\user-login.ts:34"},"result":{"status":"passed","duration":45930799},"time":"00:00:00.045"},{"keyword":"After","hidden":true,"result":{"status":"passed","duration":276529100}}],"tags":[{"name":"@SCRUM-5","line":6}],"type":"scenario","duration":0.319815497,"time":"00:00:00.319","passed":5,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0}],"id":"f366e9f7-18f9-4742-8caf-859aeee94c78-user-login-verification","line":1,"keyword":"Feature","name":"User Login Verification","tags":[],"uri":"features\\user-login.feature","metadata":{"reportTime":"2026/06/19 10:32:31","browser":{"name":"chromium","version":"latest"},"device":"Local Machine","platform":{"name":"windows","version":"11"}},"scenarios":{"passed":1,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"passedPercentage":"100.00","failedPercentage":"0.00","notDefinedPercentage":"0.00","skippedPercentage":"0.00","pendingPercentage":"0.00","ambiguousPercentage":"0.00","total":1},"duration":319815497,"time":"00:00:00.319","isFailed":false,"isAmbiguous":false,"isSkipped":false,"isNotdefined":false,"isPending":false,"passed":1,"failed":0,"notDefined":0,"skipped":0,"pending":0,"ambiguous":0,"totalTime":319815497,"app":"","browser":"chromium latest","device":"Local Machine","os":"windows 11","executionPlatform":"local"}]
     };
 </script>
 
