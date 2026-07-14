@@ -150,5 +150,8 @@ vite.config.ts.timestamp-*
 /playwright/.cache/
 /playwright/.auth/
 
+# Playwright MCP logs
+.playwright-mcp/
+
 # Docs
 docs/project-plan.md
