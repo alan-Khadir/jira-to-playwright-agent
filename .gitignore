@@ -149,3 +149,6 @@ vite.config.ts.timestamp-*
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Docs
+docs/project-plan.md
