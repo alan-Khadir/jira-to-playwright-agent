@@ -1,133 +1,75 @@
 # 🎭 Jira to Playwright Agent
 ## Dual-Server Agentic Orchestration Layer for Autonomous Test Generation
 
+### What Is This?
+
+This framework enables **autonomous end-to-end test generation** directly from Jira tickets using a dual-server MCP orchestration layer. Declarative commands like `"Automate the complete end-to-end framework assets for Jira ticket SCRUM-5"` trigger workflows that extract requirements, explore the live app, generate test assets, and self-heal on failures — with no manual locator guessing or boilerplate repetition.
+
 ### Architecture Overview
 
-This repository demonstrates **advanced AI-driven test automation** using a dual-server MCP orchestration layer. The framework enables autonomous end-to-end test generation directly from Jira tickets, with no manual locator guessing, no boilerplate repetition, and complete self-healing error recovery.
+**Key Innovation**: The agent autonomously:
+1. Extracts functional requirements from Jira via the Atlassian MCP server
+2. Explores the live web app via Playwright MCP for dynamic DOM discovery
+3. Generates Page Objects with semantic locators following Playwright's recommended 7-level priority (getByRole → getByLabel → getByPlaceholder → getByText → getByAltText → getByTitle → getByTestId as fallback)
+4. Generates Gherkin features and step definitions
+5. Executes tests and self-heals on compilation errors
+6. Documents complete traceability between Jira and framework assets
 
-**Key Innovation**: Declarative automation commands like `"Automate the complete end-to-end framework assets for Jira ticket SCRUM-5"` trigger autonomous workflows that:
-1. Extract functional requirements from Jira
-2. Explore the live web app via Playwright MCP for dynamic DOM discovery
-3. Generate Page Objects, Gherkin features, and step definitions
-4. Execute tests and self-heal on compilation errors
-5. Document complete traceability between Jira and framework assets
+**Central Constraints & Orchestration**
 
-### Central Constraints & Orchestration
-
-**Global Framework Standards**: [`.github/copilot-instructions.md`](.github/copilot-instructions.md)
-- Defines Principal QA Automation Engineer persona within VS Code
-- Enforces Page Object Model, Gherkin naming, and Jira tagging standards
-- Implements autonomous multi-server loop (Jira MCP + Playwright MCP)
-- Enables self-healing error recovery and autonomous defect correction
-
-**Dual-Server MCP Configuration**: [`.vscode/mcp.json`](.vscode/mcp.json)
-- **Atlassian Server** (`@sooperset/mcp-atlassian`): Jira requirement extraction
-- **Playwright Server** (`@playwright/mcp`): Dynamic DOM analysis and locator discovery
-- Both servers execute inside Docker containers for security and session isolation
+- **Global Framework Standards**: [`.github/copilot-instructions.md`](.github/copilot-instructions.md) — Principal QA Automation Engineer persona, locator strategy, Page Object Model standards, self-healing loop, and demo presentation mode
+- **Dual-Server MCP Configuration**: [`.vscode/mcp.json`](.vscode/mcp.json) — Atlassian server for Jira requirement extraction + Playwright server for dynamic DOM analysis, both running inside Docker containers
 
 ### Tech Stack
 
 - **Test Framework**: Playwright with TypeScript
 - **BDD Layer**: Cucumber with Gherkin scenarios
-- **Page Objects**: TypeScript classes with readonly locators mapped to `data-testid`
+- **Page Objects**: TypeScript classes with semantic locators following Playwright's official priority (see [Locator Strategy](.github/copilot-instructions.md#b-locator-strategy))
 - **Requirements**: Jira MCP server for live ticket querying
 - **DOM Discovery**: Playwright MCP for autonomous element locator extraction
 - **Orchestration**: VS Code Copilot Agent with self-healing loop
 
+### Project Structure
+
+```
+jira-to-playwright-agent/
+├── .github/
+│   └── copilot-instructions.md    # Agent steering file (Sections 1-6)
+├── .vscode/
+│   └── mcp.json                   # Dual-server MCP configuration
+├── docs/
+│   ├── setup-guide.md             # Full setup & configuration guide
+│   ├── project-plan.md            # Chronological assembly log
+│   └── SCRUM-5-implementation.md  # Example automation report
+├── tests/
+│   ├── features/                  # Gherkin .feature files
+│   ├── src/
+│   │   ├── pages/                 # Page Object Model classes
+│   │   ├── steps/                 # Step definition files
+│   │   └── support/               # Hooks, world, config
+│   └── reports/                   # Generated HTML reports
+├── webapp/
+│   ├── html/                      # Application HTML pages
+│   ├── js/                        # Application JavaScript
+│   ├── css/                       # Application styles
+│   └── data/                      # Application data (topics.json)
+├── .gitignore
+├── jira-mcp.env                   # Jira credentials (NOT committed)
+└── README.md
+```
+
 ### Quick Start
 
-#### Prerequisites
-- **Node.js** v18+
-- **Docker Desktop** (must be running; required for MCP servers)
-- **VS Code** with GitHub Copilot extension
+1. **Install dependencies**: `cd tests && npm install`
+2. **Start the webapp**: `cd webapp && npx serve .`
+3. **Run tests**: `cd tests && npm run test:bdd:demo`
+4. **Full MCP setup** (Jira + Playwright servers): see [Setup Guide](docs/setup-guide.md)
 
-#### Step 1: Install Project Dependencies
+> ⚠️ This repository is intentionally delivered as a **clean-slate template**. The agent dynamically inspects the DOM, writes test code, and runs self-healing loops entirely from scratch.
 
-```bash
-cd tests
-npm install
-```
+### Using the Agent
 
-This caches all dependencies locally before initializing MCP server channels.
-
-#### Step 2: Set Up MCP Servers (One-Time)
-
-1. Ensure **Docker Desktop is running** (open from applications menu or system tray)
-2. Create `jira-mcp.env` in the repository root with your Jira credentials (see [`docs/setup-guide.md`](docs/setup-guide.md))
-3. In VS Code, open the **MCP Panel** (status bar or Command Palette)
-4. **Start** the `@sooperset/mcp-atlassian` server (for Jira integration)
-5. **Start** the `@playwright/mcp` server (for DOM exploration)
-6. Reload the window: `Ctrl+Shift+P` → `Developer: Reload Window`
-
-#### Step 3: Run the Webapp & Tests
-
-**Terminal 1** — Start the web app:
-```bash
-cd webapp
-npx serve .
-# App available at http://localhost:3000/html/index.html
-```
-
-**Terminal 2** — Run tests:
-```bash
-cd tests
-npm run test:bdd
-```
-
-#### Step 4: Autonomous Test Generation (Advanced)
-
-With your MCP servers running, open **VS Code Copilot Chat (Agent Mode)** and choose one of the options below to run the pipeline:
-
-##### Option A: Live Jira Integration (Full Dual-MCP Loop)
-If you have configured your Atlassian credentials and set up the blueprint ticket on your board (see the exact ticket layout in [`docs/setup-guide.md`](docs/setup-guide.md)), type:
-```
-Automate the complete end-to-end framework assets for Jira ticket SCRUM-5.
-```
-
-##### Option B: Instant Local Sandbox (No Jira Required)
-If you want to test the framework's autonomous generation, locator discovery, and self-healing engine instantly without setting up a Jira account, type:
-```
-Bypass Jira and automate a brand new end-to-end negative test scenario called 'User fails to sign in with invalid credentials'. Use Playwright MCP to scan signin.html for the correct locators, generate the new test assets, and run test:bdd to validate it.
-```
-
-Whichever option you choose, the agent will autonomously:
-- Query Jira for the ticket requirements (or parse your local prompt instructions)
-- Explore the live app and discover element locators via Playwright MCP
-- Generate feature files, Page Objects, and step definitions
-- Execute tests and validate the entire suite
-- Document complete traceability in `docs/SCRUM-5-implementation.md` (or your local equivalent)
-
-> ⚠️ **Important Note:** This repository is intentionally delivered as a **clean-slate template** with no pre-existing test files in the primary branch. This ensures that whichever command you run above, you will get to see the agent dynamically inspect the DOM, write the code, and run the self-healing loops entirely from scratch!
-
-## Demo Presentation Mode
-
-A narration-friendly logging mode designed for video demos and recorded walkthroughs. When activated, the agent outputs structured milestone updates suitable for professional voiceover narration.
-
-**Activation rule:** Only enabled when explicitly requested in the prompt.
-
-**Example prompts:**
-
-Demo ON:
-```
-Automate SCRUM-5 — Demo Presentation Mode ON.
-```
-
-Demo OFF:
-```
-Automate SCRUM-5 — Demo Presentation Mode OFF.
-```
-
-**Command behavior:**
-- Demo mode ON/OFF changes log verbosity only.
-- Default execution command in Agent Mode remains `npm run test:bdd:demo` unless the user explicitly requests `npm run test:bdd`.
-
-**Expected milestone outputs:**
-- `Starting [Milestone Name]` — announces each phase
-- `Self-Healing` — explains automatic fixes applied
-- `Live Interaction` — describes UI elements navigated
-- `[Milestone Name] completed successfully` — confirms phase completion
-
-### Prompt Examples
+With MCP servers running, open **VS Code Copilot Chat (Agent Mode)** and issue a declarative prompt:
 
 ```
 Automate the complete end-to-end framework assets for Jira ticket SCRUM-5.
@@ -135,41 +77,26 @@ Run in Demo Presentation Mode (milestone narration enabled).
 Use npm run test:bdd:demo.
 ```
 
-```
-Automate the complete end-to-end framework assets for Jira ticket SCRUM-5.
-Run in Standard Mode (concise logs, no milestone narration).
-Use npm run test:bdd:demo.
-```
+The agent will autonomously extract requirements from Jira, explore the live app for locators, generate feature files, Page Objects, and step definitions, then execute and validate the test suite.
 
-```
-Automate SCRUM-5 — Demo Presentation Mode ON.
-```
+For all available prompt templates (running tests, fixing failures, accessibility testing, batch operations, and more), see [Prompt Templates File](docs/prompt-templates.md) or the [Prompt Examples section in the Setup Guide](docs/setup-guide.md#-prompt-examples).
 
-Demo Presentation Mode controls narration verbosity only; command execution remains `npm run test:bdd:demo` unless `npm run test:bdd` is explicitly requested.
+### Demo Presentation Mode
 
----
+The agent supports a narration-friendly logging mode for video demos. Add "Demo Presentation Mode ON" to your prompt to enable structured milestone outputs. See [Setup Guide — Demo Presentation Mode](docs/setup-guide.md#-demo-presentation-mode-optional) for details and examples.
+
+### Command Reference
+
+For the full command reference, see [Setup Guide — Command Reference](docs/setup-guide.md#️-command-reference).
 
 ### Debugging & Troubleshooting
 
-**Default Browser Execution**: The test suite runs in **headed mode by default** (`headless: false` in `tests/src/support/hooks.ts`), so you will see the browser UI during test execution.
+For debugging tips (headed mode, Playwright Inspector, VS Code extension), see [Setup Guide — Debugging](docs/setup-guide.md#-interactive-test-debugging).
 
-**Interactive Step Debugging**:
-```powershell
-$env:PWDEBUG = '1'
-cd tests
-npm run test:bdd
-```
-This opens the Playwright Inspector side-by-side with the browser for interactive stepping and DOM inspection.
+### Documentation
 
-**Playwright VS Code Extension**:
-Use the [Playwright VS Code Extension](https://playwright.dev/docs/getting-started-vscode) to create, run, trace, and debug tests visually with the test explorer.
-
-### Documentation & Architecture
-
-- **Full Project Plan**: [docs/project-plan.md](docs/project-plan.md) — chronological assembly log and Phase 7 agentic orchestration details
-- **Setup Guide**: [docs/setup-guide.md](docs/setup-guide.md) — environment configuration and troubleshooting
-- **Example Automation Report**: [docs/SCRUM-5-implementation.md](docs/SCRUM-5-implementation.md) — SCRUM-5 autonomous test generation artifacts and traceability
-- **Global Constraints**: [.github/copilot-instructions.md](.github/copilot-instructions.md) — Principal QA Engineer persona and framework standards
+- **Setup Guide**: [docs/setup-guide.md](docs/setup-guide.md) — environment configuration, commands, and troubleshooting
+- **Steering File**: [.github/copilot-instructions.md](.github/copilot-instructions.md) — Principal QA Engineer persona, locator strategy, and 30+ prompt templates
 
 ## License
 
