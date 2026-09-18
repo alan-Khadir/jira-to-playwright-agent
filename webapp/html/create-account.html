@@ -3,21 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Create Account</title>
+  <title>Create Account — Testing Playground</title>
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
+  <header class="site-header">
+    <nav aria-label="Main navigation" class="primary-nav">
+      <a href="index.html" class="nav-brand" data-testid="nav-logo-link">🧪 Testing Playground</a>
+      <ul class="primary-nav-links">
+        <li><a href="signin.html" data-testid="nav-login-link">Login</a></li>
+        <li><a href="create-account.html" data-testid="nav-signup-link">Sign-up</a></li>
+        <li><a href="taskboard.html" data-testid="nav-taskboard-link">Task Board</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Topics navigation" class="topics-nav">
+      <ul class="topics-nav-links">
+        <li><a href="dashboard.html?topic=Deep%20Ocean%20Mysteries">🌊 Deep Ocean Mysteries</a></li>
+        <li><a href="dashboard.html?topic=Ancient%20Civilizations">🏛️ Ancient Civilizations</a></li>
+        <li><a href="dashboard.html?topic=Human%20Body%20Wonders">🧬 Human Body Wonders</a></li>
+        <li><a href="dashboard.html?topic=Space%20Exploration">🚀 Space Exploration</a></li>
+        <li><a href="dashboard.html?topic=Cryptography%20%26%20Codes">🔐 Cryptography &amp; Codes</a></li>
+        <li><a href="dashboard.html?topic=Optical%20Illusions">🎭 Optical Illusions</a></li>
+        <li><a href="dashboard.html?topic=Endangered%20Languages">📜 Endangered Languages</a></li>
+        <li><a href="dashboard.html?topic=Volcanic%20Worlds">🌋 Volcanic Worlds</a></li>
+        <li><a href="dashboard.html?topic=Extreme%20Weather">⛈️ Extreme Weather</a></li>
+        <li><a href="dashboard.html?topic=Time%20%26%20Calendars">⏳ Time &amp; Calendars</a></li>
+      </ul>
+    </nav>
+  </header>
   <main>
-    <h1>Create Account</h1>
-    <form id="create-account-form">
-      <label for="new-email">Email</label>
-      <input data-testid="new-email-input" type="email" id="new-email" required />
-      <label for="new-password">Password</label>
-      <input data-testid="new-password-input" type="password" id="new-password" required />
-      <button data-testid="submit-create-account" type="submit">Create Account</button>
-      <div id="create-account-message" class="message" aria-live="polite"></div>
-    </form>
+    <div class="form-card">
+      <h1>Create Account</h1>
+      <form id="create-account-form" data-testid="signup-form" novalidate>
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" placeholder="Enter your full name" required data-testid="signup-fullname-input" />
+          <span class="field-error" id="fullname-error" role="alert" data-testid="signup-fullname-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="new-email">Email</label>
+          <input type="email" id="new-email" placeholder="Enter your email address" required data-testid="signup-email-input" />
+          <span class="field-error" id="email-error" role="alert" data-testid="signup-email-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="new-password">Password</label>
+          <input type="password" id="new-password" placeholder="Create a password" required minlength="8" data-testid="signup-password-input" />
+          <span class="field-error" id="password-error" role="alert" data-testid="signup-password-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" placeholder="Re-enter your password" required data-testid="signup-confirm-password-input" />
+          <span class="field-error" id="confirm-error" role="alert" data-testid="signup-confirm-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="terms-checkbox" class="checkbox-label">
+            <input type="checkbox" id="terms-checkbox" required data-testid="signup-terms-checkbox" />
+            I agree to the Terms &amp; Conditions
+          </label>
+          <span class="field-error" id="terms-error" role="alert" data-testid="signup-terms-error"></span>
+        </div>
+        <button type="submit" data-testid="signup-submit-button">Create Account</button>
+        <div id="create-account-message" class="message" aria-live="polite" data-testid="signup-success"></div>
+      </form>
+    </div>
   </main>
+  <script>
+    (function() {
+      var form = document.getElementById('create-account-form');
+      form.addEventListener('submit', function(e) {
+        var valid = true;
+        form.querySelectorAll('.field-error').forEach(function(el) { el.textContent = ''; });
+
+        var fullName = document.getElementById('full-name');
+        var email = document.getElementById('new-email');
+        var password = document.getElementById('new-password');
+        var confirm = document.getElementById('confirm-password');
+        var terms = document.getElementById('terms-checkbox');
+
+        if (!fullName.value.trim() || fullName.value.trim().length < 2) {
+          document.getElementById('fullname-error').textContent = 'Name must be at least 2 characters';
+          valid = false;
+        }
+        if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+          document.getElementById('email-error').textContent = 'Please enter a valid email address';
+          valid = false;
+        }
+        if (!password.value || password.value.length < 8) {
+          document.getElementById('password-error').textContent = 'Password must be at least 8 characters';
+          valid = false;
+        }
+        if (password.value !== confirm.value) {
+          document.getElementById('confirm-error').textContent = 'Passwords do not match';
+          valid = false;
+        }
+        if (!terms.checked) {
+          document.getElementById('terms-error').textContent = 'You must agree to the Terms & Conditions';
+          valid = false;
+        }
+
+        if (!valid) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      }, true);
+
+      form.addEventListener('submit', function() {
+        setTimeout(function() {
+          var msg = document.getElementById('create-account-message');
+          if (msg && msg.textContent === 'Account created successfully!') {
+            setTimeout(function() { window.location.href = 'signin.html'; }, 2000);
+          }
+        }, 0);
+      });
+    })();
+  </script>
+  <script src="../js/toast.js"></script>
   <script src="../js/app.js"></script>
 </body>
 </html>

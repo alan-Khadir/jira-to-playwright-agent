@@ -1,0 +1,7 @@
+{
+  "cleanUrls": false,
+  "redirects": [
+    { "source": "/", "destination": "/html/index.html", "type": 302 },
+    { "source": "/html", "destination": "/html/index.html", "type": 302 }
+  ]
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Testing Playground</title>
+  <title>Task Board — Testing Playground</title>
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
@@ -31,20 +31,30 @@
       </ul>
     </nav>
   </header>
-  <main class="container hero">
-    <h1>🧪 Automation Testing Playground</h1>
-    <p>Explore fascinating topics while mastering Playwright testing. Every click, every interaction — a chance to learn something amazing.</p>
-    <a href="#topics" class="btn">🚀 Start Exploring</a>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li aria-current="page">Task Board</li>
+    </ol>
+  </nav>
+  <main class="container">
+    <h1>📋 Learning Task Board</h1>
+    <p>Drag and drop tasks between columns to track your learning progress.</p>
+    <div id="taskboard" class="taskboard-columns">
+      <div class="task-column" id="col-todo">
+        <h2>📋 To Learn</h2>
+        <div class="col-body"></div>
+      </div>
+      <div class="task-column" id="col-progress">
+        <h2>📖 In Progress</h2>
+        <div class="col-body"></div>
+      </div>
+      <div class="task-column" id="col-done">
+        <h2>✅ Mastered</h2>
+        <div class="col-body"></div>
+      </div>
+    </div>
   </main>
-  <section id="stats-section" class="stats-section">
-    <div class="stat-item"><span class="stat-number" data-target="10">0</span><span class="stat-label">Topics</span></div>
-    <div class="stat-item"><span class="stat-number" data-target="50" data-suffix="+">0</span><span class="stat-label">Components</span></div>
-    <div class="stat-item"><span class="stat-number" data-target="100" data-suffix="+">0</span><span class="stat-label">Testable Elements</span></div>
-  </section>
-  <section class="container" id="topics">
-    <h2>Explore Topics</h2>
-    <div id="topic-grid" class="topic-grid"></div>
-  </section>
   <script src="../js/toast.js"></script>
   <script src="../js/app.js"></script>
 </body>

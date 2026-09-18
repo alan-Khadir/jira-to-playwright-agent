@@ -17,11 +17,11 @@ Make sure you have the following installed and running before starting:
 
 ## 📦 Install Dependencies
 
-**1.** Open your terminal at the repository root
+**1.** Open a Windows PowerShell terminal at the repository root
 
 **2.** Install the framework automation dependencies:
 
-```bash
+```powershell
 cd tests
 npm install
 ```
@@ -52,11 +52,11 @@ The `.playwright-mcp/` folder contains temporary console logs and page snapshots
 
 ## 🚀 Start the Webapp
 
-**1.** Open a terminal and navigate to the webapp folder
+**1.** Open a Windows PowerShell terminal and navigate to the webapp folder
 
 **2.** Start the static webapp server using npx:
 
-```bash
+```powershell
 cd webapp
 npx serve .
 ```
@@ -84,11 +84,11 @@ These credentials are defined in `webapp/js/app.js`. You can modify them if need
 
 ## 🧪 Run the Playwright BDD Tests
 
-**1.** With the webapp server running in your first terminal, open a second terminal
+**1.** With the webapp server running in your first PowerShell terminal, open a second PowerShell terminal
 
 **2.** Navigate to the tests directory and execute the Cucumber BDD suite:
 
-```bash
+```powershell
 cd tests
 npm run test:bdd
 ```
@@ -101,7 +101,7 @@ The framework supports visual HTML report generation for demos and presentations
 
 **Run the full demo flow** (tests + HTML report + auto-open):
 
-```bash
+```powershell
 cd tests
 npm run test:bdd:demo
 ```
@@ -110,7 +110,8 @@ This command executes all BDD scenarios, generates the HTML report at `reports/h
 
 **Generate the report separately** (without re-running tests):
 
-```bash
+```powershell
+cd tests
 npm run report:bdd
 ```
 
@@ -358,7 +359,71 @@ The prompt templates file contains 30+ ready-to-use prompt templates organized b
 
 **Problem:** Browser cannot connect to `http://localhost:3000`
 
-**Solution:** Ensure your first terminal is still running `npx serve .`
+**Solution:** Bash is not required. On Windows, use PowerShell, which is available by default. The terminal type does not determine the port.
+
+1. Open a Windows PowerShell terminal.
+2. Navigate to the webapp folder:
+
+  ```powershell
+  cd C:\git-personal\jira-to-playwright-agent\webapp
+  ```
+
+3. Check whether port `3000` is already in use:
+
+  ```powershell
+  Get-NetTCPConnection -LocalPort 3000 -State Listen
+  ```
+
+  No output means that port `3000` is available. If a result is shown, note its `OwningProcess` value. This is the process ID (PID) using the port.
+
+4. Stop the process using the port, replacing `PROCESS_ID` with the `OwningProcess` value:
+
+  ```powershell
+  Stop-Process -Id PROCESS_ID
+  ```
+
+  Example:
+
+  ```powershell
+  Stop-Process -Id 23736
+  ```
+
+  If PowerShell reports that the process cannot be found, it has already stopped. Run the port check again before continuing.
+
+5. Confirm that port `3000` is available:
+
+  ```powershell
+  Get-NetTCPConnection -LocalPort 3000 -State Listen
+  ```
+
+6. Start the webapp explicitly on port `3000`:
+
+  ```powershell
+  npx serve . -l 3000
+  ```
+
+  Keep this terminal open while using the webapp. Press `Ctrl+C` in this terminal to stop the server.
+
+7. Open the home page:
+
+  ```text
+  http://localhost:3000/html/index.html
+  ```
+
+If you run `npx serve .` without `-l 3000` and port `3000` is occupied, `serve` automatically selects another available port and prints it as the `Local` URL. Use that printed URL instead, or stop the process using port `3000` and restart with `npx serve . -l 3000`.
+
+### Too Many Redirects
+
+**Problem:** The browser shows `ERR_TOO_MANY_REDIRECTS` for `http://localhost:3000/html/index.html`.
+
+**Solution:** Stop the currently running server with `Ctrl+C`, then start it from the `webapp` folder using the explicit port command:
+
+```powershell
+cd C:\git-personal\jira-to-playwright-agent\webapp
+npx serve . -l 3000
+```
+
+Then reopen `http://localhost:3000/html/index.html`. If the problem continues, clear the browser site data for `localhost` or open the URL in a private window and try again.
 
 ### Missing Chromium Binaries
 
@@ -366,7 +431,7 @@ The prompt templates file contains 30+ ready-to-use prompt templates organized b
 
 **Solution:** Explicitly pull down the system binaries by running:
 
-```bash
+```powershell
 cd tests
 npx playwright install chromium
 ```
