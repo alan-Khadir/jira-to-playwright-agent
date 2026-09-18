@@ -3,21 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sign In</title>
+  <title>Sign In — Testing Playground</title>
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
+  <header class="site-header">
+    <nav aria-label="Main navigation" class="primary-nav">
+      <a href="index.html" class="nav-brand" data-testid="nav-logo-link">🧪 Testing Playground</a>
+      <ul class="primary-nav-links">
+        <li><a href="signin.html" data-testid="nav-login-link">Login</a></li>
+        <li><a href="create-account.html" data-testid="nav-signup-link">Sign-up</a></li>
+        <li><a href="taskboard.html" data-testid="nav-taskboard-link">Task Board</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Topics navigation" class="topics-nav">
+      <ul class="topics-nav-links">
+        <li><a href="dashboard.html?topic=Deep%20Ocean%20Mysteries">🌊 Deep Ocean Mysteries</a></li>
+        <li><a href="dashboard.html?topic=Ancient%20Civilizations">🏛️ Ancient Civilizations</a></li>
+        <li><a href="dashboard.html?topic=Human%20Body%20Wonders">🧬 Human Body Wonders</a></li>
+        <li><a href="dashboard.html?topic=Space%20Exploration">🚀 Space Exploration</a></li>
+        <li><a href="dashboard.html?topic=Cryptography%20%26%20Codes">🔐 Cryptography &amp; Codes</a></li>
+        <li><a href="dashboard.html?topic=Optical%20Illusions">🎭 Optical Illusions</a></li>
+        <li><a href="dashboard.html?topic=Endangered%20Languages">📜 Endangered Languages</a></li>
+        <li><a href="dashboard.html?topic=Volcanic%20Worlds">🌋 Volcanic Worlds</a></li>
+        <li><a href="dashboard.html?topic=Extreme%20Weather">⛈️ Extreme Weather</a></li>
+        <li><a href="dashboard.html?topic=Time%20%26%20Calendars">⏳ Time &amp; Calendars</a></li>
+      </ul>
+    </nav>
+  </header>
   <main>
-    <h1>Sign In</h1>
-    <form id="signin-form">
-      <label for="email">Email</label>
-      <input data-testid="email-input" type="email" id="email" required />
-      <label for="password">Password</label>
-      <input data-testid="password-input" type="password" id="password" required />
-      <button data-testid="submit-signin" type="submit">Sign In</button>
-      <div id="signin-error" class="error" aria-live="polite"></div>
-    </form>
+    <div class="form-card">
+      <h1>Sign In</h1>
+      <form id="signin-form" data-testid="signin-form">
+        <label for="email">Email</label>
+        <input type="email" id="email" required data-testid="signin-email-input" />
+        <label for="password">Password</label>
+        <input type="password" id="password" required data-testid="signin-password-input" />
+        <button type="submit" data-testid="signin-submit-button">Sign In</button>
+        <div id="signin-error" class="error" aria-live="polite" data-testid="signin-error"></div>
+      </form>
+    </div>
+    <div class="credentials-hint" data-testid="signin-credentials-hint" style="max-width:400px;margin:var(--space-md) auto 0;padding:var(--space-md) var(--space-lg);background:var(--color-primary-light);border-radius:var(--radius-sm);font-size:var(--font-size-sm);color:var(--color-text-secondary);text-align:center;">
+      🧪 Test Credentials: Email: <strong>user@test.com</strong> | Password: <strong>Password123</strong>
+    </div>
   </main>
+  <script src="../js/toast.js"></script>
   <script src="../js/app.js"></script>
 </body>
 </html>

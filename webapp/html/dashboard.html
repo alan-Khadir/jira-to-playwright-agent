@@ -3,13 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dashboard</title>
+  <title>Dashboard — Testing Playground</title>
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
-  <main>
+  <header class="site-header">
+    <nav aria-label="Main navigation" class="primary-nav">
+      <a href="index.html" class="nav-brand" data-testid="nav-logo-link">🧪 Testing Playground</a>
+      <ul class="primary-nav-links">
+        <li><a href="signin.html" data-testid="nav-login-link">Login</a></li>
+        <li><a href="create-account.html" data-testid="nav-signup-link">Sign-up</a></li>
+        <li><a href="taskboard.html" data-testid="nav-taskboard-link">Task Board</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Topics navigation" class="topics-nav">
+      <ul class="topics-nav-links">
+        <li><a href="dashboard.html?topic=Deep%20Ocean%20Mysteries">🌊 Deep Ocean Mysteries</a></li>
+        <li><a href="dashboard.html?topic=Ancient%20Civilizations">🏛️ Ancient Civilizations</a></li>
+        <li><a href="dashboard.html?topic=Human%20Body%20Wonders">🧬 Human Body Wonders</a></li>
+        <li><a href="dashboard.html?topic=Space%20Exploration">🚀 Space Exploration</a></li>
+        <li><a href="dashboard.html?topic=Cryptography%20%26%20Codes">🔐 Cryptography &amp; Codes</a></li>
+        <li><a href="dashboard.html?topic=Optical%20Illusions">🎭 Optical Illusions</a></li>
+        <li><a href="dashboard.html?topic=Endangered%20Languages">📜 Endangered Languages</a></li>
+        <li><a href="dashboard.html?topic=Volcanic%20Worlds">🌋 Volcanic Worlds</a></li>
+        <li><a href="dashboard.html?topic=Extreme%20Weather">⛈️ Extreme Weather</a></li>
+        <li><a href="dashboard.html?topic=Time%20%26%20Calendars">⏳ Time &amp; Calendars</a></li>
+      </ul>
+    </nav>
+  </header>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html">Topics</a></li>
+      <li aria-current="page">Dashboard</li>
+    </ol>
+  </nav>
+  <main class="container">
     <h1>Dashboard</h1>
-    <p data-testid="dashboard-welcome">Welcome back!</p>
+    <p>Welcome back!</p>
   </main>
+  <script src="../js/toast.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,172 @@
+[
+  {
+    "title": "Deep Ocean Mysteries",
+    "coreFact": "The Mariana Trench is so deep that if you placed Mount Everest at its bottom, the peak would still be over a mile underwater.",
+    "hook": "Did you know we've mapped more of Mars than our own ocean floor?",
+    "category": "Science",
+    "componentType": "accordion",
+    "emoji": "🌊",
+    "difficulty": "Intermediate",
+    "points": 20,
+    "funFacts": [
+      "The ocean contains about 20 million tons of dissolved gold — worth roughly $771 trillion at current prices.",
+      "A species of jellyfish called Turritopsis dohrnii is biologically immortal and can revert to its juvenile form.",
+      "The pressure at the bottom of the Mariana Trench is over 15,000 pounds per square inch — equivalent to 50 jumbo jets stacked on top of you.",
+      "More than 80% of the ocean remains unmapped, unobserved, and unexplored by modern technology.",
+      "There are underwater lakes and rivers on the ocean floor, formed by dense brine that settles into depressions."
+    ]
+  },
+  {
+    "title": "Ancient Civilizations",
+    "coreFact": "The Great Pyramid of Giza was the tallest human-made structure on Earth for nearly 3,800 years until Lincoln Cathedral surpassed it in 1311.",
+    "hook": "Could ancient engineers really align a 6-million-ton pyramid to true north within 0.05 degrees?",
+    "category": "History",
+    "componentType": "table",
+    "emoji": "🏛️",
+    "difficulty": "Beginner",
+    "points": 10,
+    "funFacts": [
+      "The Indus Valley Civilization had flush toilets and covered sewage systems by 2600 BCE — technology Europe wouldn't widely adopt for thousands of years.",
+      "Ancient Romans used a concrete formula so durable that their harbor structures have actually gotten stronger over 2,000 years of exposure to seawater.",
+      "The Library of Alexandria may have held up to 400,000 scrolls, representing the largest collection of knowledge in the ancient world.",
+      "The Aztec capital Tenochtitlan had a population of over 200,000, making it one of the largest cities in the world in 1500.",
+      "Ancient Egyptians used a 365-day calendar as early as 4000 BCE, remarkably close to our modern calendar."
+    ]
+  },
+  {
+    "title": "Human Body Wonders",
+    "coreFact": "Your body produces about 25 million new cells every second — meaning you generate more cells in 15 seconds than there are people in the United States.",
+    "hook": "How is it possible that your skeleton completely replaces itself every 10 years?",
+    "category": "Science",
+    "componentType": "card-list",
+    "emoji": "🧬",
+    "difficulty": "Beginner",
+    "points": 10,
+    "funFacts": [
+      "The human brain can generate about 23 watts of electrical power — enough to power a small LED light bulb.",
+      "If you uncoiled all the DNA in your body, it would stretch about twice the diameter of the entire Solar System.",
+      "Your nose can detect over one trillion different scents, far more than the few thousand previously estimated.",
+      "The human eye can distinguish approximately 10 million different colors.",
+      "Nerve impulses travel to and from the brain at speeds up to 268 miles per hour — faster than a Formula 1 race car."
+    ]
+  },
+  {
+    "title": "Space Exploration",
+    "coreFact": "Voyager 1, launched in 1977, is now over 15 billion miles from Earth and still transmitting data — making it humanity's most distant messenger.",
+    "hook": "What would happen if you could drive a car straight up into space at highway speed?",
+    "category": "Technology",
+    "componentType": "tabs",
+    "emoji": "🚀",
+    "difficulty": "Advanced",
+    "points": 30,
+    "funFacts": [
+      "A day on Venus is longer than its year — it takes 243 Earth days to rotate once but only 225 Earth days to orbit the Sun.",
+      "The International Space Station travels at about 17,500 mph, meaning astronauts see 16 sunrises and sunsets every day.",
+      "There are more stars in the observable universe than grains of sand on all of Earth's beaches combined.",
+      "Saturn's density is so low that if you could find a bathtub large enough, the planet would actually float in water.",
+      "The footprints left by Apollo astronauts on the Moon will remain visible for at least 100 million years since there is no wind to erode them."
+    ]
+  },
+  {
+    "title": "Cryptography & Codes",
+    "coreFact": "The Enigma machine used by Nazi Germany had 158,962,555,217,826,360,000 possible settings, yet Allied codebreakers at Bletchley Park cracked it daily.",
+    "hook": "Can you guess how a cipher invented by Julius Caesar 2,000 years ago still influences modern encryption?",
+    "category": "Technology",
+    "componentType": "form",
+    "emoji": "🔐",
+    "difficulty": "Advanced",
+    "points": 30,
+    "funFacts": [
+      "The Caesar Cipher, one of the earliest known encryption methods, simply shifts each letter by a fixed number of positions in the alphabet.",
+      "Modern RSA encryption relies on the mathematical difficulty of factoring the product of two very large prime numbers.",
+      "During WWII, the US military used Navajo speakers as 'code talkers' — their language was never deciphered by the enemy.",
+      "Quantum computers could potentially break most current encryption methods, spurring a race to develop quantum-resistant algorithms.",
+      "The first known use of cryptography dates back to 1900 BCE, when an Egyptian scribe used non-standard hieroglyphs in an inscription."
+    ]
+  },
+  {
+    "title": "Optical Illusions",
+    "coreFact": "Your brain processes visual information 60,000 times faster than text, yet it can be fooled by simple geometric patterns into seeing things that aren't there.",
+    "hook": "Why does your brain insist two identical colors are different when placed on contrasting backgrounds?",
+    "category": "Culture",
+    "componentType": "toggle-panel",
+    "emoji": "🎭",
+    "difficulty": "Beginner",
+    "points": 10,
+    "funFacts": [
+      "The 'Rotating Snakes' illusion creates an impression of motion from a completely static image using carefully arranged color gradients.",
+      "Humans have a blind spot in each eye where the optic nerve connects to the retina, but your brain seamlessly fills in the missing information.",
+      "The Ames Room illusion makes people appear to grow or shrink as they walk across the room by using forced perspective geometry.",
+      "Motion aftereffect (the 'waterfall illusion') causes stationary objects to appear to move after you stare at something moving for a prolonged period.",
+      "The Müller-Lyer illusion, where arrows make identical lines look different lengths, works across nearly every human culture ever tested."
+    ]
+  },
+  {
+    "title": "Endangered Languages",
+    "coreFact": "A language dies approximately every two weeks, and by 2100, nearly half of the world's 7,000 languages may fall silent forever.",
+    "hook": "What if the language holding the cure to a disease disappeared before anyone could translate it?",
+    "category": "Culture",
+    "componentType": "search-filter",
+    "emoji": "📜",
+    "difficulty": "Advanced",
+    "points": 30,
+    "funFacts": [
+      "The Pirahã language in the Amazon has no words for specific numbers, colors, or grammatical recursion — challenging fundamental theories of linguistics.",
+      "Silbo Gomero is a whistled language used on La Gomera island that can be understood up to 5 kilometers away across deep valleys.",
+      "There are over 250 Indigenous Australian languages, but only about 13 are still being learned by children today.",
+      "The Koro language in northeast India was unknown to linguists until 2010, despite having approximately 1,000 speakers.",
+      "When a language dies, humanity loses unique knowledge about medicinal plants, ecological relationships, and cultural histories that exist nowhere else."
+    ]
+  },
+  {
+    "title": "Volcanic Worlds",
+    "coreFact": "Indonesia's Krakatoa eruption in 1883 was so loud it was heard 3,000 miles away and circled the Earth four times as a detectable shockwave.",
+    "hook": "Did you know there's a volcano on Mars three times taller than Mount Everest?",
+    "category": "Geography",
+    "componentType": "slider",
+    "emoji": "🌋",
+    "difficulty": "Intermediate",
+    "points": 20,
+    "funFacts": [
+      "Olympus Mons on Mars stands 72,000 feet tall — nearly three times the height of Everest — making it the tallest known volcano in the Solar System.",
+      "Yellowstone sits atop a supervolcano whose magma chamber holds enough material to fill the Grand Canyon more than 11 times.",
+      "About 75% of the world's active volcanoes are located along the Pacific Ring of Fire, a 25,000-mile horseshoe-shaped zone.",
+      "Volcanic lightning occurs when ash particles collide in an eruption plume, generating static electricity that produces spectacular lightning storms.",
+      "The 1815 eruption of Mount Tambora caused the 'Year Without a Summer' in 1816, bringing frost and crop failures to Europe and North America."
+    ]
+  },
+  {
+    "title": "Extreme Weather",
+    "coreFact": "A single hurricane can release energy equivalent to 10,000 nuclear bombs per day, mostly through the formation of rain clouds.",
+    "hook": "Is it true that lightning strikes the Earth about 100 times every second?",
+    "category": "Geography",
+    "componentType": "checklist",
+    "emoji": "⛈️",
+    "difficulty": "Intermediate",
+    "points": 20,
+    "funFacts": [
+      "The highest temperature ever reliably recorded on Earth was 134°F (56.7°C) in Death Valley, California, on July 10, 1913.",
+      "Ball lightning — glowing, floating spheres of electricity — has been reported for centuries but remains one of the least understood weather phenomena.",
+      "A tornado's wind speed can exceed 300 mph, making the strongest tornadoes more powerful than any Category 5 hurricane.",
+      "Antarctica is technically the world's largest desert, receiving less precipitation annually than the Sahara.",
+      "The Catatumbo Lightning in Venezuela produces lightning storms up to 300 nights per year, generating about 1.2 million lightning strikes annually."
+    ]
+  },
+  {
+    "title": "Time & Calendars",
+    "coreFact": "When the Gregorian calendar was adopted in 1582, ten days were simply deleted — people went to sleep on October 4th and woke up on October 15th.",
+    "hook": "Why did September, which means 'seventh month' in Latin, end up as the ninth month?",
+    "category": "History",
+    "componentType": "dropdown-menu",
+    "emoji": "⏳",
+    "difficulty": "Beginner",
+    "points": 10,
+    "funFacts": [
+      "The ancient Egyptians were the first to use a 365-day calendar, dividing the year into 12 months of 30 days each plus 5 extra festival days.",
+      "The French Revolutionary Calendar renamed all twelve months and divided each month into three 10-day weeks called 'décades.'",
+      "A leap second is occasionally added to UTC to account for the gradual slowing of Earth's rotation — the last one was added in December 2016.",
+      "The Ethiopian calendar is roughly 7–8 years behind the Gregorian calendar and has 13 months — 12 months of 30 days and a 13th month of 5 or 6 days.",
+      "The concept of a 7-day week originated in ancient Babylon and was linked to the seven celestial bodies visible to the naked eye."
+    ]
+  }
+]
